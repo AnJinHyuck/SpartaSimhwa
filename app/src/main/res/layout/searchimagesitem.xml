@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/ivsearchImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/leb"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvfromWhere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="티스토리"
+        android:layout_marginTop="5sp"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/ivsearchImage"
+        app:layout_constraintTop_toBottomOf="@+id/ivsearchImage" />
+
+
+    <TextView
+        android:id="@+id/tvwhen"
+        android:textSize="11sp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2024-01-21 22:50:57"
+        app:layout_constraintStart_toStartOf="@+id/tvfromWhere"
+        app:layout_constraintTop_toBottomOf="@+id/tvfromWhere" />
+</androidx.constraintlayout.widget.ConstraintLayout>

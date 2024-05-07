@@ -2,12 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="UI.SearchFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.SearchFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        tools:listitem="@layout/searchimagesitem"
+        tools:itemCount="2"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:layout_height="match_parent" />
 </FrameLayout>
