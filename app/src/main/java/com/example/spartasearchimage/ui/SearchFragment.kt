@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.example.spartasearchimage.data.DocumentResponse
 import com.example.spartasearchimage.databinding.FragmentSearchBinding
+import com.example.spartasearchimage.retrofit.NetWorkClient
+import kotlinx.coroutines.launch
 
 class SearchFragment : Fragment() {
 
-    private val items = listOf<DocumentResponse>()
+    private var items = listOf<DocumentResponse>()
     private lateinit var binding: FragmentSearchBinding
     private lateinit var searchImageAdapter: SearchRecyclerViewAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,14 +31,18 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupAdapter()
     }
 
 
     private fun setupAdapter(){
-        searchImageAdapter = SearchRecyclerViewAdapter(items)
+        searchImageAdapter = SearchRecyclerViewAdapter(items,requireContext())
         binding.rvSearch.adapter = searchImageAdapter
+        binding.btnSearch.setOnClickListener {
+            val searchName = binding.svSearch.text.toString()
+            communicationNetWork(setUpImageParameter(searchName))
+        }
+
 //      binding.rvSearch.layoutManager = GridLayoutManager(context, 2)
     }
 
@@ -46,6 +53,14 @@ class SearchFragment : Fragment() {
             "page" to 1,
             "size" to 80
         )
+    }
+
+    private fun communicationNetWork(param: HashMap<String,Any>) = lifecycleScope.launch {
+        val responseData = NetWorkClient.kakaoSearch.getImage(param)
+        items = responseData.documents
+        searchImageAdapter = SearchRecyclerViewAdapter(items, requireContext()) // 오류 해결 코드
+        binding.rvSearch.adapter = searchImageAdapter
+
     }
 
 

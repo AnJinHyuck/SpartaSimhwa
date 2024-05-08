@@ -1,5 +1,6 @@
 package com.example.spartasearchimage.ui
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +10,7 @@ import com.example.spartasearchimage.data.DocumentResponse
 import com.example.spartasearchimage.databinding.SearchimagesitemBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
-
+//컨텍스트 넘기면 안됨, 컨텍스트 참조 하면 먼저 제거 되어야 하는데 안 됨
 class SearchRecyclerViewAdapter(private val searchData : List<DocumentResponse>) : RecyclerView.Adapter<SearchRecyclerViewAdapter.SearchViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val binding = SearchimagesitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)

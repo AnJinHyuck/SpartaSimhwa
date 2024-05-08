@@ -17,8 +17,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+        setFragment(SearchFragment())
 
-        binding.btnSearch.setOnClickListener {
+        binding.btnSearchImage.setOnClickListener {
             setFragment(SearchFragment())
         }
 

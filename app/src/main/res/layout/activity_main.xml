@@ -9,14 +9,13 @@
 
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_width="400dp"
-        android:layout_height="600dp"
-        android:layout_marginTop="55dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSearchImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    </FrameLayout>
 
 
     <Button
@@ -39,26 +38,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <EditText
-        android:id="@+id/svSearch"
-        android:layout_width="250dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="10dp"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnSearch"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:text="검색하기"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/svSearch"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/svSearch"
-        app:layout_constraintTop_toTopOf="@+id/svSearch" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
