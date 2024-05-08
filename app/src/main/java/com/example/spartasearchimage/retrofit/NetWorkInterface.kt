@@ -14,9 +14,6 @@ interface NetWorkInterface {
 
     suspend fun getImage(
         @Query("query") query: String,
-        @Query("sort") sort: String,
-        @Query("page") page: Int,
-        @Query("size") size: Int
     ): ImageResponse
     //카카오 이미지 검색 API 호출하는 인터페이스 정의
 }

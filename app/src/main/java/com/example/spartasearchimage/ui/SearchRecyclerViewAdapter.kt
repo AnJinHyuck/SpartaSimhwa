@@ -10,7 +10,7 @@ import com.example.spartasearchimage.databinding.SearchimagesitemBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class SearchRecyclerViewAdapter(private val searchData : List<DocumentResponse>) : RecyclerView.Adapter<SearchRecyclerViewAdapter.SearchViewHolder>() {
+class SearchRecyclerViewAdapter(private val searchData : MutableList<DocumentResponse>) : RecyclerView.Adapter<SearchRecyclerViewAdapter.SearchViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val binding = SearchimagesitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SearchViewHolder(binding)
@@ -24,6 +24,13 @@ class SearchRecyclerViewAdapter(private val searchData : List<DocumentResponse>)
     override fun getItemCount(): Int {
        return searchData.size
     }
+
+    fun updateItems(newItems: List<DocumentResponse>) {
+        searchData.clear()
+        searchData.addAll(newItems)
+        notifyDataSetChanged()
+    }
+
 
 
 
