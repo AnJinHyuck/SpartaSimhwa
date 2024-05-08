@@ -36,7 +36,7 @@ class SearchFragment : Fragment() {
 
 
     private fun setupAdapter(){
-        searchImageAdapter = SearchRecyclerViewAdapter(items,requireContext())
+        searchImageAdapter = SearchRecyclerViewAdapter(items)
         binding.rvSearch.adapter = searchImageAdapter
         binding.btnSearch.setOnClickListener {
             val searchName = binding.svSearch.text.toString()
@@ -58,7 +58,7 @@ class SearchFragment : Fragment() {
     private fun communicationNetWork(param: HashMap<String,Any>) = lifecycleScope.launch {
         val responseData = NetWorkClient.kakaoSearch.getImage(param)
         items = responseData.documents
-        searchImageAdapter = SearchRecyclerViewAdapter(items, requireContext()) // 오류 해결 코드
+        searchImageAdapter = SearchRecyclerViewAdapter(items) // 오류 해결 코드
         binding.rvSearch.adapter = searchImageAdapter
 
     }
