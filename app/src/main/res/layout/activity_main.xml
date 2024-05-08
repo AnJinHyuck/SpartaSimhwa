@@ -5,13 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    tools:context=".MainActivity">
 
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_marginTop="55dp"
         android:layout_width="400dp"
         android:layout_height="600dp"
+        android:layout_marginTop="55dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,14 +19,15 @@
     </FrameLayout>
 
 
-   <Button
-       android:id="@+id/btnSearchImage"
-       android:layout_width="180dp"
-       android:layout_height="wrap_content"
-       android:layout_marginStart="20dp"
-       android:layout_marginBottom="20dp"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintStart_toStartOf="parent"/>
+    <Button
+        android:id="@+id/btnSearchImage"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="이미지 검색"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnImageStorage"
@@ -34,16 +35,17 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:text="보관함"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <android.widget.SearchView
+    <EditText
         android:id="@+id/svSearch"
         android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginStart="10dp"
         android:background="#FFFFFF"
-        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,10 +53,10 @@
         android:id="@+id/btnSearch"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/svSearch"
-        app:layout_constraintEnd_toEndOf="parent"
         android:text="검색하기"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/svSearch"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/svSearch"
         app:layout_constraintTop_toTopOf="@+id/svSearch" />
 

@@ -1,4 +1,4 @@
-package com.example.spartasearchimage.ui
+package com.example.spartasearchimage
 
 import com.example.spartasearchimage.ui.SearchFragment
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.example.spartasearchimage.R
 import com.example.spartasearchimage.databinding.ActivityMainBinding
+import com.example.spartasearchimage.ui.StorageFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -17,8 +18,12 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
-        binding.btnImageStorage.setOnClickListener {
+        binding.btnSearch.setOnClickListener {
             setFragment(SearchFragment())
+        }
+
+        binding.btnImageStorage.setOnClickListener {
+            setFragment(StorageFragment())
         }
     }
 
