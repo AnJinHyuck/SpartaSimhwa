@@ -10,19 +10,30 @@ import com.example.spartasearchimage.databinding.SearchimagesitemBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class SearchRecyclerViewAdapter(private val searchData : MutableList<DocumentResponse>) : RecyclerView.Adapter<SearchRecyclerViewAdapter.SearchViewHolder>() {
+interface OnItemClickListener {
+    fun onItemClick(document: DocumentResponse)
+}
+
+class SearchRecyclerViewAdapter(
+    private val searchData: MutableList<DocumentResponse>,
+    private val listener: OnItemClickListener
+) : RecyclerView.Adapter<SearchRecyclerViewAdapter.SearchViewHolder>() {
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
-        val binding = SearchimagesitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return SearchViewHolder(binding)
+        val binding =
+            SearchimagesitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return SearchViewHolder(binding, listener)
 
     }
 
+
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
-       holder.bindItem(searchData[position])
+        holder.bindItem(searchData[position])
     }
 
     override fun getItemCount(): Int {
-       return searchData.size
+        return searchData.size
     }
 
     fun updateItems(newItems: List<DocumentResponse>) {
@@ -31,12 +42,11 @@ class SearchRecyclerViewAdapter(private val searchData : MutableList<DocumentRes
         notifyDataSetChanged()
     }
 
-
-
-
-    class SearchViewHolder(val binding:SearchimagesitemBinding):ViewHolder(binding.root){
-        fun bindItem( item : DocumentResponse){
-
+    class SearchViewHolder(
+        val binding: SearchimagesitemBinding,
+        private val listener: OnItemClickListener
+    ) : ViewHolder(binding.root) {
+        fun bindItem(item: DocumentResponse) {
             Glide.with(binding.root.context)
                 .load(item.thumbnailUrl)
                 .into(binding.ivsearchImage)
@@ -45,11 +55,13 @@ class SearchRecyclerViewAdapter(private val searchData : MutableList<DocumentRes
             item.datetime?.let {
                 val fromat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
                 binding.tvwhen.text = fromat.format(it)
-            } ?: run {
-                binding.tvwhen.text = ""
+            }
+            binding.root.setOnClickListener {
+                listener.onItemClick(item)
             }
 
         }
     }
+
 
 }
