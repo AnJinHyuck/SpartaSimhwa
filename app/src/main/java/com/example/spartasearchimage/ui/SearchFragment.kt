@@ -1,5 +1,7 @@
 package com.example.spartasearchimage.ui
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -40,17 +42,24 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
+
         binding.btnSearch.setOnClickListener {
             val searchName = binding.svSearch.text.toString()
             searchViewModel.getKakaoList(searchName)
+            hideKeyBoard()
         }
-
 
         searchViewModel.kakaoList.observe(viewLifecycleOwner) { documents ->
             documents?.let {
                 searchImageAdapter.updateItems(it)
             }
         }
+    }
+
+
+    private fun hideKeyBoard(){
+        val inputMethodManager = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(requireActivity().window.decorView.applicationWindowToken,0)
     }
 
 

@@ -50,6 +50,5 @@ class StorageFragment : Fragment() {
         Log.d("check3","$")
         binding.rvStorage.adapter = storageAdapter
         binding.rvStorage.layoutManager = GridLayoutManager(context, 2)
-
     }
 }

@@ -27,9 +27,6 @@ object NetWorkClient {
              createOkHttpClient()
          ).build()
 
-    private fun getDateFormatGsonBuilder() = GsonBuilder()
-        .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-        .create()
 
     val kakaoSearch: NetWorkInterface = kakaoRetrofit.create(NetWorkInterface::class.java)
 

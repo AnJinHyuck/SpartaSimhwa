@@ -24,6 +24,7 @@ class SearchViewModel(private val kakaoSearch: NetWorkInterface) : ViewModel() {
                 kakaoSearch.getImage(query).documents
         }
     }
+
 }
 
 class SearchViewModelFactory : ViewModelProvider.Factory {
