@@ -76,7 +76,6 @@ class SearchFragment : Fragment() {
                 }
             })
         binding.rvSearch.adapter = searchImageAdapter
-//      binding.rvSearch.layoutManager = GridLayoutManager(context, 2)
     }
 
 
