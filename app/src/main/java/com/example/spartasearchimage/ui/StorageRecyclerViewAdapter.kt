@@ -1,6 +1,7 @@
 package com.example.spartasearchimage.ui
 
 import android.app.appsearch.StorageInfo
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
@@ -14,24 +15,28 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class StorageRecyclerViewAdapter(
-    private val storageItem: MutableList<DocumentResponse>,
-    private val listener: OnClickListener
+//    private val listener: OnClickListener
 ) : RecyclerView.Adapter<StorageRecyclerViewAdapter.ViewHolder>() {
+    private var storageItem: MutableList<DocumentResponse> = mutableListOf()
     fun updateItems(newItems: List<DocumentResponse>) {
         storageItem.clear()
         storageItem.addAll(newItems)
+        Log.d("check2", "$storageItem")
         notifyDataSetChanged()
     }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
         val binding = StorageitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        Log.d("check6", "are you alive?")
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindStorageItem(storageItem[position])
+        Log.d("check5", "$position")
     }
 
     override fun getItemCount(): Int {
@@ -50,6 +55,7 @@ class StorageRecyclerViewAdapter(
                 val fromat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
                 binding.tvwhenInStorage.text = fromat.format(it)
             }
+            Log.d("check4", "$item")
 
 
         }

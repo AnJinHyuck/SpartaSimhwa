@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {
 
         setFragment(SearchFragment())
 
+        binding.btnSearchImage.setOnClickListener {
+            setFragment(SearchFragment())
+        }
         binding.btnImageStorage.setOnClickListener {
             setFragment(StorageFragment())
         }

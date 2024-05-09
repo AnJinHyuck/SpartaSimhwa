@@ -10,7 +10,7 @@ class HeartViewModel : ViewModel() {
     val selectedItems: LiveData<MutableList<DocumentResponse>?> get() = _selectedItems
 
 
-    fun addItem(item: DocumentResponse){
+    fun addItem(item: DocumentResponse) {
         val heartList = _selectedItems.value
         heartList?.add(item)
         _selectedItems.value = heartList
