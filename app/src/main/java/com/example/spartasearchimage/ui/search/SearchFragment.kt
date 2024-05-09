@@ -1,19 +1,17 @@
-package com.example.spartasearchimage.ui
+package com.example.spartasearchimage.ui.search
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.spartasearchimage.data.DocumentResponse
 import com.example.spartasearchimage.databinding.FragmentSearchBinding
+import com.example.spartasearchimage.ui.HeartViewModel
 
 class SearchFragment : Fragment() {
 
@@ -42,21 +40,28 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
+        onClickListener()
+        observer()
 
+    }
+
+
+    private fun onClickListener(){
         binding.btnSearch.setOnClickListener {
             val searchName = binding.svSearch.text.toString()
             searchViewModel.getKakaoList(searchName)
             hideKeyBoard()
         }
 
+
+    }
+    private fun observer(){
         searchViewModel.kakaoList.observe(viewLifecycleOwner) { documents ->
             documents?.let {
                 searchImageAdapter.updateItems(it)
             }
         }
     }
-
-
     private fun hideKeyBoard(){
         val inputMethodManager = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(requireActivity().window.decorView.applicationWindowToken,0)

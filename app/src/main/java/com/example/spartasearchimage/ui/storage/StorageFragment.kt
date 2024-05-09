@@ -1,4 +1,4 @@
-package com.example.spartasearchimage.ui
+package com.example.spartasearchimage.ui.storage
 
 import android.os.Bundle
 import android.util.Log
@@ -8,10 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.spartasearchimage.R
-import com.example.spartasearchimage.data.DocumentResponse
-import com.example.spartasearchimage.databinding.FragmentSearchBinding
 import com.example.spartasearchimage.databinding.FragmentStorageBinding
+import com.example.spartasearchimage.ui.HeartViewModel
 
 class StorageFragment : Fragment() {
 

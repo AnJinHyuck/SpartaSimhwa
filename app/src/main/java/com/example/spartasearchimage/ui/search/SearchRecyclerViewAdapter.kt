@@ -1,7 +1,6 @@
-package com.example.spartasearchimage.ui
+package com.example.spartasearchimage.ui.search
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
@@ -61,7 +60,6 @@ class SearchRecyclerViewAdapter(
             binding.root.setOnClickListener {
                 listener.onItemClick(item)
                 binding.ivredHeart.isVisible = true
-
             }
         }
     }

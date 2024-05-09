@@ -1,4 +1,4 @@
-package com.example.spartasearchimage.ui
+package com.example.spartasearchimage.ui.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

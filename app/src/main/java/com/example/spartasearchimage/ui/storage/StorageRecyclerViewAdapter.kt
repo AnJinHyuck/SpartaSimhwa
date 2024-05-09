@@ -1,15 +1,11 @@
-package com.example.spartasearchimage.ui
+package com.example.spartasearchimage.ui.storage
 
-import android.app.appsearch.StorageInfo
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.spartasearchimage.data.DocumentResponse
-import com.example.spartasearchimage.databinding.FragmentStorageBinding
 import com.example.spartasearchimage.databinding.StorageitemBinding
 import java.text.SimpleDateFormat
 import java.util.Locale

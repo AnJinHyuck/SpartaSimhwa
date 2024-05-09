@@ -1,14 +1,12 @@
 package com.example.spartasearchimage
 
-import com.example.spartasearchimage.ui.SearchFragment
+import com.example.spartasearchimage.ui.search.SearchFragment
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import com.example.spartasearchimage.R
 import com.example.spartasearchimage.databinding.ActivityMainBinding
-import com.example.spartasearchimage.ui.StorageFragment
+import com.example.spartasearchimage.ui.storage.StorageFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

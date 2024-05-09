@@ -15,4 +15,8 @@ class HeartViewModel : ViewModel() {
         heartList?.add(item)
         _selectedItems.value = heartList
     }
+
+    fun removeItem(){
+
+    }
 }
