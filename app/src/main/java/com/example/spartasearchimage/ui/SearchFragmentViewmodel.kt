@@ -14,9 +14,10 @@ import kotlinx.coroutines.launch
 class SearchViewModel(private val kakaoSearch: NetWorkInterface) : ViewModel() {
     //viewModel에서 liveData에 값 세팅
     private val _kakaoList: MutableLiveData<List<DocumentResponse>?> = MutableLiveData()
-
     //view에서 livedata값 observing할 것
-    val kakaoList: MutableLiveData<List<DocumentResponse>?> get() = _kakaoList
+    val kakaoList: LiveData<List<DocumentResponse>?> get() = _kakaoList
+
+
     fun getKakaoList(query:String) {
         viewModelScope.launch {
             _kakaoList.value =

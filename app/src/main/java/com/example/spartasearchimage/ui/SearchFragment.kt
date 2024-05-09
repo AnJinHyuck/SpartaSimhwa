@@ -36,6 +36,11 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
+        binding.btnSearch.setOnClickListener {
+            val searchName = binding.svSearch.text.toString()
+            searchViewModel.getKakaoList(searchName)
+        }
+
 
         searchViewModel.kakaoList.observe(viewLifecycleOwner) {documents ->
             documents?.let {
@@ -44,7 +49,6 @@ class SearchFragment : Fragment() {
             Log.d("", this.toString())
             //TODO RecyclerView 값 setting -> notify, 전역으로 선언 된 recyclerview list에 값 세팅 해주던지,,
         }
-        searchViewModel.getKakaoList("아이브")
     }
 
 
@@ -52,15 +56,6 @@ class SearchFragment : Fragment() {
         searchImageAdapter = SearchRecyclerViewAdapter(items)
         binding.rvSearch.adapter = searchImageAdapter
 //      binding.rvSearch.layoutManager = GridLayoutManager(context, 2)
-    }
-
-    private fun setUpImageParameter(search:String):HashMap<String,Any> {
-        return hashMapOf(
-            "query" to search,
-            "sort" to "accuracy",
-            "page" to 1,
-            "size" to 80
-        )
     }
 
 

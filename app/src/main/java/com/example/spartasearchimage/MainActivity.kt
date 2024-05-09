@@ -18,9 +18,8 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
-        binding.btnSearch.setOnClickListener {
-            setFragment(SearchFragment())
-        }
+        setFragment(SearchFragment())
+
 
         binding.btnImageStorage.setOnClickListener {
             setFragment(StorageFragment())
