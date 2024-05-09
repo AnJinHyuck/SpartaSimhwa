@@ -1,7 +1,9 @@
 package com.example.spartasearchimage.ui
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
@@ -10,15 +12,15 @@ import com.example.spartasearchimage.databinding.SearchimagesitemBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-interface OnItemClickListener {
-    fun onItemClick(document: DocumentResponse)
-}
 
 class SearchRecyclerViewAdapter(
     private val searchData: MutableList<DocumentResponse>,
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<SearchRecyclerViewAdapter.SearchViewHolder>() {
 
+    interface OnItemClickListener {
+        fun onItemClick(document: DocumentResponse)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val binding =
@@ -58,8 +60,9 @@ class SearchRecyclerViewAdapter(
             }
             binding.root.setOnClickListener {
                 listener.onItemClick(item)
-            }
+                binding.ivredHeart.isVisible = true
 
+            }
         }
     }
 

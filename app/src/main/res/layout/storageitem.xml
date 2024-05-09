@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivstorageImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/leb"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvfromWhereInStorage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:text="티스토리"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/ivstorageImage"
+            app:layout_constraintTop_toBottomOf="@+id/ivstorageImage" />
+
+
+        <TextView
+            android:id="@+id/tvwhenInStorage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2024-01-21 22:50:57"
+            android:textColor="@color/black"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@+id/tvfromWhereInStorage"
+            app:layout_constraintTop_toBottomOf="@+id/tvfromWhereInStorage" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/ivredHeart"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/redheart"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="125dp"/>
+</FrameLayout>

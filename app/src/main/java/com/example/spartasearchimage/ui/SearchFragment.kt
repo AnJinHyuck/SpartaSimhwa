@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.spartasearchimage.data.DocumentResponse
 import com.example.spartasearchimage.databinding.FragmentSearchBinding
@@ -16,9 +17,10 @@ class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
     private lateinit var searchImageAdapter: SearchRecyclerViewAdapter
 
-    private val searchViewModel : SearchViewModel by viewModels {
+    private val searchViewModel: SearchViewModel by viewModels {
         SearchViewModelFactory()
     }
+    private val heartViewModel: HeartViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,18 +44,22 @@ class SearchFragment : Fragment() {
         }
 
 
-        searchViewModel.kakaoList.observe(viewLifecycleOwner) {documents ->
+        searchViewModel.kakaoList.observe(viewLifecycleOwner) { documents ->
             documents?.let {
                 searchImageAdapter.updateItems(it)
             }
-            Log.d("", this.toString())
-            //TODO RecyclerView 값 setting -> notify, 전역으로 선언 된 recyclerview list에 값 세팅 해주던지,,
         }
     }
 
 
-    private fun setupAdapter(){
-        searchImageAdapter = SearchRecyclerViewAdapter(items)
+    private fun setupAdapter() {
+        searchImageAdapter = SearchRecyclerViewAdapter(
+            items,
+            object : SearchRecyclerViewAdapter.OnItemClickListener {
+                override fun onItemClick(document: DocumentResponse) {
+                    heartViewModel.addItem(document)
+                }
+            })
         binding.rvSearch.adapter = searchImageAdapter
 //      binding.rvSearch.layoutManager = GridLayoutManager(context, 2)
     }

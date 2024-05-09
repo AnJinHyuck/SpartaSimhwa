@@ -5,11 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.example.spartasearchimage.R
+import com.example.spartasearchimage.databinding.FragmentSearchBinding
+import com.example.spartasearchimage.databinding.FragmentStorageBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 class StorageFragment : Fragment() {
+    private val sharedViewModel: HeartViewModel by activityViewModels()
+    private lateinit var binding: FragmentStorageBinding
+    private lateinit var storageAdapter: StorageRecyclerViewAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,8 +23,25 @@ class StorageFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_storage, container, false)
+    ): View {
+        binding = FragmentStorageBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+
+        sharedViewModel.selectedItems.observe(viewLifecycleOwner) { items ->
+            items?.let {
+                storageAdapter.updateItems(it)
+            }
+        }
+    }
+    private fun setupRecyclerView() {
+        binding.rvStorage.adapter = storageAdapter
+        storageAdapter = StorageRecyclerViewAdapter(mutableListOf()){
+
+        }
     }
 }
